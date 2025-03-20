@@ -7,7 +7,6 @@ interface CalculatorOperations {
     double divide(double a, double b);
 }
 
-// Class implementing the interface
 class SimpleCalculator implements CalculatorOperations {
     
     public double add(double a, double b) {
