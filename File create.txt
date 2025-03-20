@@ -1,0 +1,51 @@
+import java.io.*;
+
+public class FileHandlingExample {
+    public static void main(String[] args) {
+        String fileName = "example.txt";
+        String content = "Hello, this is a sample text written to the file.";
+        createAndWriteFile(fileName, content);
+
+        // Step 2: Read from the File
+        readFile(fileName);
+    }
+    public static void createAndWriteFile(String fileName, String content) {
+        try {
+            File file = new File(fileName);
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                System.out.println("File already exists, overwriting content.");
+            }
+            FileWriter writer = new FileWriter(file);
+            writer.write(content);
+            writer.close();
+            System.out.println("Successfully wrote to the file.");
+
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file.");
+            e.printStackTrace();
+        }
+    }
+    public static void readFile(String fileName) {
+        try {
+            File file = new File(fileName);
+            if (!file.exists()) {
+                System.out.println("File does not exist.");
+                return;
+            }
+
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String line;
+            System.out.println("Reading from the file:");
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+            reader.close();
+
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+            e.printStackTrace();
+        }
+    }
+}
