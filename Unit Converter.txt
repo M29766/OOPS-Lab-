@@ -1,0 +1,105 @@
+import java.util.Scanner;
+
+class UnitConverter {
+    
+    public static double metersToKilometers(double meters) {
+        return meters / 1000;
+    }
+
+    public static double kilometersToMeters(double kilometers) {
+        return kilometers * 1000;
+    }
+
+    public static double inchesToCentimeters(double inches) {
+        return inches * 2.54;
+    }
+
+    public static double centimetersToInches(double cm) {
+        return cm / 2.54;
+    }
+
+    public static double kilogramsToPounds(double kg) {
+        return kg * 2.20462;
+    }
+
+    public static double poundsToKilograms(double lbs) {
+        return lbs / 2.20462;
+    }
+
+    public static double gramsToOunces(double grams) {
+        return grams * 0.035274;
+    }
+
+    public static double ouncesToGrams(double ounces) {
+        return ounces / 0.035274;
+    }
+
+    public static double celsiusToFahrenheit(double celsius) {
+        return (celsius * 9/5) + 32;
+    }
+
+    public static double fahrenheitToCelsius(double fahrenheit) {
+        return (fahrenheit - 32) * 5/9;
+    }
+}
+public class UnitConverterApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\n=== Unit Converter ===");
+            System.out.println("1. Length");
+            System.out.println("2. Weight");
+            System.out.println("3. Temperature");
+            System.out.println("4. Exit");
+            System.out.print("Select a category: ");
+            int category = scanner.nextInt();
+
+            if (category == 4) {
+                System.out.println("Thank you for using the Unit Converter!");
+                break;
+            }
+
+            System.out.print("Enter value to convert: ");
+            double value = scanner.nextDouble();
+            double result = 0;
+
+            switch (category) {
+                case 1:
+                    System.out.println("1. Meters to Kilometers\n2. Kilometers to Meters\n3. Inches to Centimeters\n4. Centimeters to Inches");
+                    int lengthChoice = scanner.nextInt();
+                    if (lengthChoice == 1) result = UnitConverter.metersToKilometers(value);
+                    else if (lengthChoice == 2) result = UnitConverter.kilometersToMeters(value);
+                    else if (lengthChoice == 3) result = UnitConverter.inchesToCentimeters(value);
+                    else if (lengthChoice == 4) result = UnitConverter.centimetersToInches(value);
+                    else System.out.println("Invalid choice!");
+                    break;
+
+                case 2:
+                    System.out.println("1. Kilograms to Pounds\n2. Pounds to Kilograms\n3. Grams to Ounces\n4. Ounces to Grams");
+                    int weightChoice = scanner.nextInt();
+                    if (weightChoice == 1) result = UnitConverter.kilogramsToPounds(value);
+                    else if (weightChoice == 2) result = UnitConverter.poundsToKilograms(value);
+                    else if (weightChoice == 3) result = UnitConverter.gramsToOunces(value);
+                    else if (weightChoice == 4) result = UnitConverter.ouncesToGrams(value);
+                    else System.out.println("Invalid choice!");
+                    break;
+
+                case 3:
+                    System.out.println("1. Celsius to Fahrenheit\n2. Fahrenheit to Celsius");
+                    int tempChoice = scanner.nextInt();
+                    if (tempChoice == 1) result = UnitConverter.celsiusToFahrenheit(value);
+                    else if (tempChoice == 2) result = UnitConverter.fahrenheitToCelsius(value);
+                    else System.out.println("Invalid choice!");
+                    break;
+
+                default:
+                    System.out.println("Invalid category! Please try again.");
+            }
+
+            System.out.println("Converted Value: " + result);
+        }
+
+        scanner.close();
+    }
+}
