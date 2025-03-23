@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+class Area1 {
+    double area;
+
+    void Area(double r) {
+        area = 3.14 * r * r;
+        System.out.println("Area of circle: " + area);
+    }
+
+    void Area(double l, double b) {
+        area = l * b;
+        System.out.println("Area of rectangle: " + area);
+    }
+
+    void Area(int b, double h) {
+        area = 0.5 * b * h;
+        System.out.println("Area of triangle: " + area);
+    }
+    public static void main(String[] args) {
+        Scanner s1 = new Scanner(System.in);
+
+        System.out.print("Enter radius: ");
+        double radius = s1.nextDouble();
+
+        Area1 a1 = new Area1();
+        a1.Area(radius);
+
+        System.out.print("Enter length: ");
+        double length = s1.nextDouble();
+        System.out.print("Enter breadth: ");
+        double breadth = s1.nextDouble();
+        a1.Area(length, breadth);
+
+        System.out.print("Enter base: ");
+        int base = s1.nextInt();
+        System.out.print("Enter height: ");
+        double height = s1.nextDouble();
+        a1.Area(base, height);
+    }
+}
